@@ -11,7 +11,7 @@ const Banner: React.FC<IProps> = ({ title, subtitle }) => {
     <div className="bg-black w-full h-44 rounded-xl relative">
       <Image
         src={"/star-bg.png"}
-        fill={true}
+        layout="fill"
         alt="star-bg"
         className="absolute select-none animate-pulse"
       />

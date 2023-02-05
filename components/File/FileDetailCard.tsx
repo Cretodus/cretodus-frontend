@@ -69,7 +69,12 @@ const FileDetailCard: React.FC<IProps> = ({ oid }) => {
               </p>
               <div className="mt-8 bg-black text-white p-3 rounded-md w-72 flex space-x-1 items-center justify-center cursor-pointer select-none hover:bg-gray-900">
                 <BsDownload className="text-2xl mr-2" />
-                <a href={`${data.fileUrl}`} target="_blank" download>
+                <a
+                  rel="noreferrer"
+                  href={`${data.fileUrl}`}
+                  target="_blank"
+                  download
+                >
                   Downlaod File
                 </a>
               </div>

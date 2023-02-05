@@ -34,7 +34,7 @@ export default function TimeRemain({ timeData }) {
 
       return () => clearInterval(handler);
     }
-  }, [timeData]);
+  }, [timeData, getRemaningTime]);
   return (
     <div>
       {timeOver ? (

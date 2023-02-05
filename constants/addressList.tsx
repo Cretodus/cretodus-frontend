@@ -1,5 +1,5 @@
 export const CONTRACT_ADDRESS = {
-  cretodus: "0x381FE879Dd3a94e9A61b8F97A04c470b1BFc2117",
+  cretodus: "0x93772397f7b18a803DA84A8bc83529E6f7714422",
 };
 
 export const CONTRACT_NAMES = Object.entries(CONTRACT_ADDRESS).reduce<

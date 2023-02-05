@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 import Layout from "@/components/Layout/Layout";
-import FileView from "../../components/View/FileView";
+import FileView from "../components/View/FileView";
 
 export default function File() {
   const router = useRouter();

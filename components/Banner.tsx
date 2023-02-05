@@ -10,7 +10,7 @@ const Banner: React.FC<IProps> = ({ title, subtitle }) => {
   return (
     <div className="bg-black w-full h-44 rounded-xl relative">
       <Image
-        src={"/star-bg.png"}
+        src={"https://cretodus.0xwa.run/star-bg.png"}
         layout="fill"
         alt="star-bg"
         className="absolute select-none animate-pulse"

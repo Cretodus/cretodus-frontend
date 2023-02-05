@@ -27,28 +27,31 @@ export default function FileTable({ data }) {
           </tr>
         </thead>
         <tbody className="text-center">
-          {data
-            .sort((a, b) => {
-              return b.id - a.id;
-            })
-            .map((data, index) => (
-              <tr
-                key={index}
-                className="border-b h-[70px] text-gray-600 hover:bg-gray-50 cursor-pointer"
-                onClick={() => {
-                  router.push(`/file/${data.id}`);
-                }}
-              >
-                <td className="pl-5 text-left">{data.fileUrl.split("/")[4]}</td>
-                <td className="text-left">{truncateAddress(data.cid)}</td>
-                <td>{(+data.size / 1000).toFixed(2)} KB</td>
-                <td>{data.duration} days</td>
-                <td>
-                  <TimeRemain timeData={data.deadline} />
-                </td>
-                <td className="pr-5">{formatEther(data.filAmount)} FIL</td>
-              </tr>
-            ))}
+          {data.length &&
+            data
+              .sort((a, b) => {
+                return b.id - a.id;
+              })
+              .map((data, index) => (
+                <tr
+                  key={index}
+                  className="border-b h-[70px] text-gray-600 hover:bg-gray-50 cursor-pointer"
+                  onClick={() => {
+                    router.push(`/file?oid=${data.id}`);
+                  }}
+                >
+                  <td className="pl-5 text-left">
+                    {data.fileUrl.split("/")[4]}
+                  </td>
+                  <td className="text-left">{truncateAddress(data.cid)}</td>
+                  <td>{(+data.size / 1000).toFixed(2)} KB</td>
+                  <td>{data.duration} days</td>
+                  <td>
+                    <TimeRemain timeData={data.deadline} />
+                  </td>
+                  <td className="pr-5">{formatEther(data.filAmount)} FIL</td>
+                </tr>
+              ))}
         </tbody>
       </table>
     </div>

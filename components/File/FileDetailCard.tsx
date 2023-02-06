@@ -43,7 +43,7 @@ const FileDetailCard: React.FC<IProps> = ({ oid }) => {
 
   const getEnded = (timeData: number) => {
     const now = new Date().valueOf();
-    if (now >= new Date(timeData * 1000).valueOf()) {
+    if (now >= new Date((timeData + 5) * 1000).valueOf()) {
       return true;
     } else return false;
   };
@@ -111,7 +111,11 @@ const FileDetailCard: React.FC<IProps> = ({ oid }) => {
                 </span>{" "}
                 | Total SP Joined: <span className="font-bold">{spCount}</span>
               </p>
-              <FileClaimReward oid={oid} isEnd={getEnded(data.deadline)} />
+              <FileClaimReward
+                oid={oid}
+                isEnd={getEnded(data.deadline)}
+                spCount={spCount}
+              />
             </div>
           </div>
         </div>

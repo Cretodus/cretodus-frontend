@@ -49,12 +49,21 @@ const getRewardClaimed = async (oid: string) => {
   return cretodusContract.isClaimedReward(oid);
 };
 
+const getExpiredReward = async (oid: string) => {
+  const cretodusContract = Cretodus__factory.connect(
+    ADDRESS_LIST["cretodus"],
+    getSigner()
+  );
+  return cretodusContract.getExpiredReward(oid);
+};
+
 const cretodusContractService = {
   createOffer,
   getOfferSp,
   fulfilOffer,
   getReward,
   getRewardClaimed,
+  getExpiredReward,
 };
 
 export default cretodusContractService;

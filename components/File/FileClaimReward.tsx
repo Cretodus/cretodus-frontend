@@ -7,9 +7,10 @@ import { useQuery } from "@tanstack/react-query";
 interface IProps {
   oid: string;
   isEnd: boolean;
+  spCount: number;
 }
 
-const FileClaimReward: React.FC<IProps> = ({ oid, isEnd }) => {
+const FileClaimReward: React.FC<IProps> = ({ oid, isEnd, spCount }) => {
   const [dealId, setDealId] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const { isLoading, error, data, refetch } = useQuery({
@@ -32,8 +33,13 @@ const FileClaimReward: React.FC<IProps> = ({ oid, isEnd }) => {
   const handleFulFill = async () => {
     setLoading(true);
     try {
-      const tx = await cretodusContractService.fulfilOffer(oid, dealId);
-      await tx.wait();
+      if (spCount === 0) {
+        const tx = await cretodusContractService.getExpiredReward(oid);
+        await tx.wait();
+      } else {
+        const tx = await cretodusContractService.fulfilOffer(oid, dealId);
+        await tx.wait();
+      }
       refetch();
     } catch (e) {
       console.log(e);
@@ -60,7 +66,13 @@ const FileClaimReward: React.FC<IProps> = ({ oid, isEnd }) => {
           onClick={handleGetReward}
           className="bg-black text-white p-3 rounded-xl text-center font-bold cursor-pointer hover:bg-gray-900 flex justify-center items-center"
         >
-          {loading ? <Spinner /> : "Claim Reward"}
+          {loading ? (
+            <Spinner />
+          ) : spCount === 0 ? (
+            "Recover Reward"
+          ) : (
+            "Claim Reward"
+          )}
         </div>
       ) : (
         <form

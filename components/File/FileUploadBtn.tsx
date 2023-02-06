@@ -55,7 +55,7 @@ export default function FileUploadBtn({
         cid: cid,
         deadline: deadline,
         duration: +duration,
-        filAmount: parseEther(amount.toString()).toNumber(),
+        filAmount: parseEther(amount.toString()).toString(),
         fileUrl: fileUrl,
         size: size,
         owner: walletAddress.toLowerCase(),

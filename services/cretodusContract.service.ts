@@ -6,7 +6,7 @@ import { parseEther } from "ethers/lib/utils";
 
 const createOffer = async (cid: string, deadline: number, amount: number) => {
   const cidRaw = await getRawCID(
-    "baga6ea4seaqbhzrr5yur23qurhu6kjop4wlef2mncic7rxuzi25qpagbzxdbedy"
+    "baga6ea4seaqnupvghghlrsipmgb3aitbm5wxezqsl3kxptmxdsa2sdhahjwdmhq"
   );
   const cretodusContract = Cretodus__factory.connect(
     ADDRESS_LIST["cretodus"],
